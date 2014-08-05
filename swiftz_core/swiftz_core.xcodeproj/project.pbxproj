@@ -441,7 +441,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8487947119832A90002DA439 /* Bifunctor.swift in Sources */,
 				59853A4A1967FA4800A3158C /* Functions.swift in Sources */,
 				59853A4B1967FA4800A3158C /* Operators.swift in Sources */,
 				59853A4C1967FA4800A3158C /* Nothing.swift in Sources */,
@@ -524,7 +523,7 @@
 		598539F11967F95C00A3158C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adlai Holler (2N8CP232XQ)";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

@@ -64,7 +64,7 @@ public enum List<A> {
   }
 }
 
-@infix public func ==<A : Equatable>(lhs : List<A>, rhs : List<A>) -> Bool {
+public func ==<A : Equatable>(lhs : List<A>, rhs : List<A>) -> Bool {
   switch (lhs, rhs) {
   case (.Nil, .Nil):
     return true
@@ -76,13 +76,14 @@ public enum List<A> {
 }
 
 extension List : ArrayLiteralConvertible {
-  static public func fromSeq<S : Sequence where S.GeneratorType.Element == A>(s : S) -> List<A> {
+  static public func fromSeq<S : SequenceType where S.Generator.Element == A>(s : S) -> List<A> {
     // For some reason, everything simpler seems to crash the compiler
     var xs : [A] = []
     var g = s.generate()
     while let x : A = g.next() {
-      xs += x
+        xs.append(x)
     }
+    
     var l = List()
     for x in xs.reverse() {
       l = List(x, l)
@@ -96,7 +97,7 @@ extension List : ArrayLiteralConvertible {
 }
 
 
-public class ListGenerator<A> : Generator {
+public class ListGenerator<A> : GeneratorType {
   var l : Box<List<A>?>
   public func next() -> A? {
     var r = l.value?.head()
@@ -108,7 +109,7 @@ public class ListGenerator<A> : Generator {
   }
 }
 
-extension List : Sequence {
+extension List : SequenceType {
   public func generate() -> ListGenerator<A> {
     return ListGenerator(self)
   }

@@ -23,6 +23,6 @@ public final class Box<T> {
   }
 }
 
-@infix public func <^><T, U>(fn: T -> U, x: Box<T>) -> Box<U> {
+public func <^><T, U>(fn: T -> U, x: Box<T>) -> Box<U> {
   return x.map(fn)
 }
