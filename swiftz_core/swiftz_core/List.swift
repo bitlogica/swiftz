@@ -70,13 +70,13 @@ public enum List<A> {
     return nil
   }
   public func lookup<K: Equatable, V>(ev: A -> (K, V), key: K) -> V? {
-    func pred(t: (K, V)) -> Bool {
-      return t.0 == key
-    }
-    func val(t: (K, V)) -> V {
-      return t.1
-    }
-    return (({ val(ev($0)) }) <^> self.find({ pred(ev($0)) }))
+//    func pred(t: (K, V)) -> Bool {
+//      return t.0 == key
+//    }
+//    func val(t: (K, V)) -> V {
+//      return t.1
+//    }
+    return (({ ev($0).1 }) <^> self.find({ ev($0).0 == key }))
   }
 }
 
